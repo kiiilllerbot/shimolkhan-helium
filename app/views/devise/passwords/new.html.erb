@@ -1,0 +1,45 @@
+<div class="row justify-content-center" style="margin-top: 12%">
+  <div class="col-md-5">
+    <div class="card" style="padding: 5px">
+      <div class="card-body">
+      <div class="text-center"><%= image_tag('brand.png',:size=>"45x45")%></div>
+        <h4 class="card-title text-center pt-3" style="padding-bottom: 10px">Forgot Password?</h4>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <div class="form-inputs">
+            <div class="input-group mb-2">
+              <div class="input-group-prepend">
+                <div class="input-group-text"><i class="fas fa-envelope-open"></i></div>
+              </div>
+              <%= f.email_field :email,
+                          placeholder: 'Email',
+                          required: true,
+                          autofocus: true,
+                          class: 'form-control',
+                          input_html: { autocomplete: "email" } %>
+            </div>
+          </div>
+
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "Log in", new_session_path(resource_name),:class=>"link"%>
+          <% end %>
+
+          <div class="float-right">
+            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+              <%= link_to "Sign up", new_registration_path(resource_name),:class=>"link" %>
+            <% end %>
+          </div>
+
+          <div class="form-actions" style="margin-top: 10px">
+            <%= f.button "Send Me Instruction",:class=>"btn btn-md btn-success btn-block", data:{disable_with: "<i class='fa fa-spinner fa-spin'></i> Sending ..."},:style=>"margin-left:0"%>
+          </div>
+
+          <div class="text-center">
+            <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
+              <%= link_to "Not Received Confirmation Yet?", new_confirmation_path(resource_name),:class=>"link"%>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -12,11 +12,20 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
   </head>
   <body>
+    <section>
+      <%= render 'shared/alert' %>
+    </section>
+
+    <header>
+      <%= render 'shared/navbar' %>
+    </header>
+    
     <main>
       <div class="container">
       <%= yield %>
       </div>
     </main>
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
   </body>
 </html>

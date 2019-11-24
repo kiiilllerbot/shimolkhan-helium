@@ -1,1 +1,45 @@
 @import "bootstrap";
+html,body{
+	margin-top: 40px;
+}
+
+.alert{
+    margin:0;
+    position:fixed; 
+    top: 0px; 
+    left: 0px; 
+    width: 100%;
+    z-index:9999; 
+    border: 0;
+    border-radius:0px;
+    background-color: #55B559;
+    padding: 28px;
+    text-align: center;
+    color: #fff;
+    font-weight: 450;
+    .close{
+        color: #fff !important;
+        opacity: 0.80;
+    }
+    .close:hover{
+        color: #fff !important;
+        opacity: 1;
+    }
+
+}
+
+.link{
+    text-decoration: none;
+    color: #263238;
+    opacity: 0.75;
+}
+.link:hover{
+    text-decoration: none;
+    color: #263238;
+    opacity: 1;
+}
+#user_email{
+    .form-control{
+        min-width: 100%;
+    }
+}

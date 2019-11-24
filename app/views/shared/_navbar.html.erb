@@ -1,0 +1,96 @@
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark special-color
+    #37474F scrolling-navbar">
+    <div class="container">
+      <%= link_to "HELIUM", root_path, :class=>"navbar-brand"%>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to "#" do %>
+            <div class="nav-link mt-2">
+              <i class="fas fa-fire"></i> Posts
+            </div>
+          <% end %>
+        </li>
+        <li class="nav-item item">
+          <%= link_to "#" do %>
+              <div class="nav-link mt-2">
+                <i class="fas fa-gem"></i> Categories
+              </div>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to users_path do %>
+            <div class="nav-link mt-2">
+              <i class="fas fa-smile"></i> People
+            </div>
+          <% end %>
+        </li>
+        <% if !user_signed_in? %>
+        <li class="nav-item mt-2">
+          <%= link_to "Login", new_user_session_path, :class=>"btn btn-sm btn-success"%>
+        </li>
+        <li class="nav-item mt-2">
+          <%= link_to "Register", new_user_registration_path, :class=>"btn btn-sm btn-info"%>
+        </li>
+        <% end %>
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to current_user do %>
+            <div class="nav-link mt-2">
+              <i class="fas fa-cog"></i> Account
+            </div>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+      <% if user_signed_in? %>
+      <ul class="navbar-nav nav-flex-icons">
+        <% if current_user.fb_link %>
+          <li class="nav-item mt-1">
+            <%= link_to "http://#{current_user.fb_link}",:target=>"_blank",:class=>"nav-link" do %>
+              <i class="fab fa-facebook-f"></i>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if current_user.twitter_link %>
+          <li class="nav-item mt-1">
+            <%= link_to "http://#{current_user.twitter_link}",:target=>"_blank",:class=>"nav-link" do %>
+              <i class="fab fa-twitter"></i>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if current_user.ig_link %>
+          <li class="nav-item mt-1">
+            <%= link_to "http://#{current_user.ig_link}",:target=>"_blank",:class=>"nav-link" do %>
+              <i class="fab fa-instagram"></i>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if current_user.in_link %>
+          <li class="nav-item mt-1">
+            <%= link_to "http://#{current_user.in_link}",:target=>"_blank",:class=>"nav-link" do %>
+              <i class="fab fa-linkedin-in"></i>
+            <% end %>
+          </li>
+        <% end %>
+
+        <% if current_user.github_link %>
+          <li class="nav-item mt-1">
+            <%= link_to "http://#{current_user.github_link}",:target=>"_blank",:class=>"nav-link" do %>
+              <i class="fab fa-github"></i>
+            <% end %>
+          </li>
+        <% end %>
+        <%= link_to "Log-Out", destroy_user_session_path,method: :delete, :class=>"btn btn-sm btn-success"%>
+      </ul>
+      <% end %>
+    </div>
+    </div>
+  </nav>

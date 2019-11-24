@@ -17,6 +17,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 gem 'simple_form', '~> 5.0', '>= 5.0.1'
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'
+gem 'devise', '~> 4.7', '>= 4.7.1'
 
 group :development do
 	gem 'better_errors', '~> 2.5', '>= 2.5.1'
