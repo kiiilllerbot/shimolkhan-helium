@@ -34,6 +34,11 @@
 					</small>
 				</div>
 				<div class="text-center" style="margin-top: 10px">
+					<%= link_to posts_path(@post) do %>
+						<button class="btn btn-md btn-info">
+							<i class="fas fa-arrow-left"></i>
+						</button>
+					<% end %>
 					<% if user_signed_in? %>
 						<% if current_user && current_user == @post.user || current_user.admin? %>
 							<% if can? :update, @post %>

@@ -88,6 +88,7 @@
             <% end %>
           </li>
         <% end %>
+        <%= link_to "Dashboard", rails_admin_path, :class=>"btn btn-sm purple-gradient"%>
         <%= link_to "Log-Out", destroy_user_session_path,method: :delete, :class=>"btn btn-sm btn-success"%>
       </ul>
       <% end %>
