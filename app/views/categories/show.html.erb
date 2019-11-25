@@ -17,24 +17,30 @@
 			</button>
 		<% end %>
 
+		<% if can? :update, Category %>
 			<%= link_to edit_category_path(@category) do %>
 				<button class="btn btn-md btn-secondary">
 					<i class="fas fa-pencil-alt"></i>
 				</button>
 			<% end %>
+		<% end %>
 
+		<% if can? :destroy, Category %>
 			<%= link_to category_path,method: :delete, data:{confirm:'Are you sure?'} do %>
 				<button class="btn btn-md btn-danger">
 					<i class="fas fa-trash"></i>
 				</button>
 			<% end %>
+		<% end %>
 
+		<% if can? :create, Category %>
 			<%= link_to new_category_path do %>
 				<button class="btn btn-md btn-success">
 					<i class="fas fa-arrow-right"></i>
 				</button>
 			</div>
 			<% end %>
+		<% end %>
 	</div>
 </div>
 

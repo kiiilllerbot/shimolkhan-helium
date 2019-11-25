@@ -10,6 +10,7 @@
       <% end %>
       <div class="card-body text-center">
         <h4 class="card-title"><%= link_to category.name, category,:class=>"cat-link" %></h4>
+        <small><%= pluralize(category.posts.count,"Post")%></small>
       </div>
     </div>
   </div>
@@ -18,10 +19,12 @@
 
 <div class="row">
   <div class="col">
+    <% if can? :create, Category %>
       <%= link_to new_category_path do %>
         <button class="btn btn-md btn-success btn-block" style="margin-left: 0">
           <i class="fa fa-plus"></i>
         </button>
+      <% end %>
     <% end %>
   </div>
 </div>
