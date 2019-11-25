@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 
 	acts_as_votable
+	is_impressionable
 
   belongs_to :user
   belongs_to :category

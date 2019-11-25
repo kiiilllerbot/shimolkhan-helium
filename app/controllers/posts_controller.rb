@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  impressionist :actions=>[:show]
+
   before_action :set_post, only: [:show, :edit, :update, :destroy,:upvote, :downvote]
   before_action :authenticate_user!, except: [ :index, :show ]
 
@@ -10,6 +12,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.order('created_at DESC')
+    impressionist @post
   end
 
   def new

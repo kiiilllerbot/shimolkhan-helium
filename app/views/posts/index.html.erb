@@ -39,6 +39,8 @@
             <span style="padding: 0px 5px"></span>
             <i class="far fa-thumbs-down"></i> <%= post.get_downvotes.size %>
             <span style="padding: 0px 5px"></span>
+            <i class="far fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %>
+            <span style="padding: 0px 5px"></span>
             <i class="far fa-comment"></i> <%= post.comments.count %>
           </button>
         <% end %>
