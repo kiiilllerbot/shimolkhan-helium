@@ -1,0 +1,51 @@
+<% provide(:page_title, "| All Posts") %>
+<div class="row justify-content-center animated bounceInUp delay-0.5s">
+  <div class="col-4" style="margin-top: 15px">
+    <form class="form-inline md-form form-sm mt-0">
+      <%= form_tag posts_path, method: :get do %>
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <%= text_field_tag :search, params[:search], :class=>'form-control form-control-sm ml-3 w-75', placeholder:'Search Post By Title'%>
+      <% end %>
+    </form>
+  </div>
+</div>
+
+<div class="row animated bounceInUp delay-0.5s">
+  <% @posts.each do |post| %>
+  <div class="col-md-4">
+    <div class="card text-center" style="margin-bottom: 15px;margin-top: 5px">
+      <% if post.image.attached? %>
+        <%= link_to image_tag(post.image,:class=>"card-img-top",:height=>"260")%>
+      <% else %>
+        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap" height="260">
+      <% end %>
+      <div class="card-body" style="padding: 10px">
+        <div class="badge badge-primary"><%= post.category.name %></div>
+        <h6 class="card-title" style="margin-top: 5px"><%= link_to post.title,post,:class=>"post-link" %></h6>
+        <% if post.user.image.attached? %>
+          <div>
+          <%= link_to image_tag(post.user.image,:size=>"28x28",:class=>"rounded-circle"),post.user%>
+          </div>
+          <small style="opacity: 0.75">Posted on <%= post.created_at.strftime("%B, %d, %Y")%></small>
+        <% else %>
+          <%= link_to image_tag('user.png',:size=>"28x28",:class=>"rounded-circle"),post.user%>
+          <br>
+          <small style="opacity: 0.75">Posted on <%= post.created_at.strftime("%B, %d, %Y")%></small>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<% if user_signed_in? %>
+<div class="row">
+    <div class="col">
+      <%= link_to new_post_path do %>
+        <button class="btn btn-md btn-success btn-block" style="margin-left: 0">
+          <i class="fa fa-plus"></i>
+        </button>
+      <% end %>
+    </div>
+  </div>
+<% end %>
