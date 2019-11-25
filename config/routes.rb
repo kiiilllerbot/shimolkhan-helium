@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'd/users/password', to: 'devise/passwords#new'
   end
 
+  resources :categories
+
   root 'home#index'
   
 end

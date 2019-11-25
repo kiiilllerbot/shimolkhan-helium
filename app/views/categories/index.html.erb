@@ -1,0 +1,27 @@
+<% provide(:page_title, "| All Categories") %>
+<div class="row animated slideInUp delay-0.5s">
+  <% @categories.each do |category| %>
+  <div class="col-md-4">
+    <div class="card" style="margin-top: 5px;margin-bottom: 15px">
+      <% if category.image.attached? %>
+        <%= image_tag(category.image,:class=>"card-img-top",:height=>"260")%>
+      <% else %>
+        <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap" height="260">
+      <% end %>
+      <div class="card-body text-center">
+        <h4 class="card-title"><%= link_to category.name, category,:class=>"cat-link" %></h4>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col">
+      <%= link_to new_category_path do %>
+        <button class="btn btn-md btn-success btn-block" style="margin-left: 0">
+          <i class="fa fa-plus"></i>
+        </button>
+    <% end %>
+  </div>
+</div>

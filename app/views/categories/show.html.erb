@@ -1,0 +1,38 @@
+<% provide(:page_title, "| #{@category.name}") %>
+<div class="row animated slideInDown delay-0.5s">
+	<div class="col-12 text-center" style="margin-top: 20px">
+			<% if @category.image.attached? %>
+				<%= image_tag(@category.image,:size=>"220",:class=>"rounded-circle")%>
+			<% else %>
+			<%= image_tag('default-card.jpg',:size=>"220",:class=>"rounded-circle")%>
+			<% end %>
+		<h4 style="margin-top: 20px"><%= @category.name %></h4>
+		<small><%= @category.created_at.strftime("%B, %d, %Y") %></small>
+		<hr class="my-4">
+		<p class="lead"><%= @category.description %></p>
+		<div class="links animated bounceInUp delay-0s">
+		<%= link_to categories_path do %>
+			<button class="btn btn-md btn-primary">
+				<i class="fas fa-arrow-left"></i>
+			</button>
+		<% end %>
+			<%= link_to edit_category_path(@category) do %>
+				<button class="btn btn-md btn-secondary">
+					<i class="fas fa-pencil-alt"></i>
+				</button>
+			<% end %>
+
+			<%= link_to category_path,method: :delete, data:{confirm:'Are you sure?'} do %>
+				<button class="btn btn-md btn-danger">
+					<i class="fas fa-trash"></i>
+				</button>
+			<% end %>
+
+			<%= link_to new_category_path do %>
+				<button class="btn btn-md btn-success">
+					<i class="fas fa-arrow-right"></i>
+				</button>
+			</div>
+			<% end %>
+	</div>
+</div>

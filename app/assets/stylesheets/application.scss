@@ -1,8 +1,23 @@
 @import "bootstrap";
 html,body{
-	margin-top: 40px;
+    margin-top: 40px;
 }
-
+.form-control{
+    border-radius: 0;
+}
+.link{
+    text-decoration: none;
+    color: #263238;
+    opacity: 0.75;
+}
+.link:hover{
+    text-decoration: none;
+    color: #263238;
+    opacity: 1;
+}
+.dropdown-toggle{
+    margin-top: 5px;
+}
 .alert{
     margin:0;
     position:fixed; 
@@ -27,19 +42,94 @@ html,body{
     }
 
 }
-
-.link{
+.cat-link{
     text-decoration: none;
-    color: #263238;
+    color: #000;
     opacity: 0.75;
 }
-.link:hover{
+.cat-link:hover{
     text-decoration: none;
-    color: #263238;
+    color: #000;
     opacity: 1;
 }
-#user_email{
-    .form-control{
-        min-width: 100%;
+.navbar-brand{
+    border: 1.5px solid #CFD8DC;
+    font-weight: 500;
+    padding: 5px 10px;
+}
+.post-link{
+    text-decoration: none;
+    color: #000;
+    opacity: 0.75
+}
+.post-link:hover{
+    text-decoration: none;
+    color: #000;
+    opacity: 1;
+}
+.comment-user-link{
+    text-decoration: none;
+    opacity: 0.75;
+    color: #000;
+}
+.comment-user-link:hover{
+    text-decoration: none;
+    opacity: 1;
+    color: #000;
+};
+
+#comments {
+    h2 {
+        margin: 3em 0 1em 0;
+        border-bottom: 1px solid #d6dce0;
+        padding-bottom: 0.5em;
     }
+    h3 {
+        margin-top: 2em;
+    }
+    .comment {
+        border-bottom: 1px solid #d6dce0;
+        padding: 1.5em 2em;
+        .clear_both {
+            clear: both;
+        }
+        &:after {
+            clear: both;
+        }
+        .comment_content {
+            float: left;
+            .comment_name {
+                margin: 1em 0 0 0;
+                font-size: 0.7em;
+                text-transform: uppercase;
+            }
+            .comment_body {
+                font-size: 1.2em;
+                margin: 0.2em 0 0 0;
+            }
+            .comment_time {
+                margin-top: 1.2em;
+                font-size: .8em;
+            }
+        }
+        .button {
+            float: right;
+        }
+    }
+    input[type="text"], textarea {
+        width: 50%;
+    }
+}
+p{
+    text-align: justify;
+}
+.card{
+    border-radius: 0;
+}
+.time{
+    font-size: 12px;
+    text-decoration: underline;
+}
+abbr{
+    display: none; 
 }
