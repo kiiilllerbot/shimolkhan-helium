@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
 
   resources :categories
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   root 'home#index'
   

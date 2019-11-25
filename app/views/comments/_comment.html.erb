@@ -1,0 +1,27 @@
+<hr class="my-1">
+<div id="comment-<%= comment.id %>">
+<div class="text-left">
+	<% if comment.user.image.attached? %>
+		<%= image_tag(comment.user.image,:class=>"rounded-circle",:size=>"25x25")%>
+	<% else %>
+	<%= image_tag("user.png",:class=>"rounded-circle",:size=>"25x25")%>
+	<% end %>
+	<% if comment.user.name %>
+		<strong>
+		<%= link_to comment.user.name, comment.user,:class=>"link" %>
+		</strong>
+	<% else %>
+	<strong>
+		<%= link_to comment.user.email, comment.user,:class=>"link"%>
+		</strong>
+	<% end %>
+	<% if user_signed_in? %>
+		<% if current_user && current_user == comment.user || current_user.admin? %>
+			<%= link_to "Delete", post_comment_path(@post, comment), method: :delete, remote: true,:class=>"btn btn-sm btn-danger"%>
+		<% end %>
+	<% end %>
+	<br>
+	<span class="time"><%= time_ago_in_words(comment.created_at) %> ago</span>
+	<p class="text-justify"><%= comment.body %></p>
+</div>
+</div>
