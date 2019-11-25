@@ -1,13 +1,15 @@
 <% provide(:page_title, "| All Posts") %>
 <div class="row justify-content-center animated bounceInUp delay-0.5s">
-  <div class="col-4" style="margin-top: 15px">
-    <form class="form-inline md-form form-sm mt-0">
+  <form class="form-inline md-form form-sm mt-2 mb-0">
+    <div class="form-group">
+      <i class="fas fa-search" aria-hidden="true"></i>
+    </div>
+    <div class="form-group">
       <%= form_tag posts_path, method: :get do %>
-        <i class="fas fa-search" aria-hidden="true"></i>
-        <%= text_field_tag :search, params[:search], :class=>'form-control form-control-sm ml-3 w-75', placeholder:'Search Post By Title (Case-Senstive)'%>
+        <%= text_field_tag :search, params[:search], :class=>'form-control form-control-sm ml-3 w-160', placeholder:'Title (Case-Senstive)' %>
       <% end %>
-    </form>
-  </div>
+    </div>
+  </form>
 </div>
 
 <div class="row animated bounceInUp delay-0.5s">

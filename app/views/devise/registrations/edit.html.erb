@@ -1,6 +1,6 @@
 <% provide(:page_title, "| Edit Account") %>
 <div class="row justify-content-center" style="margin-top: 5%">
-  <div class="col-md-10">
+  <div class="col" style="margin-bottom: -18px">
     <div class="card" style="padding: 20px">
       <div class="card-body">
         <h4 class="card-title text-center" style="padding-bottom: 10px">Edit Your Profile</h4>
@@ -151,5 +151,17 @@
         </div>
     </div>
 
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= link_to root_path do %>
+        <button class="btn btn-info btn-sm btn-block" style="margin-left: 0px">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+      <% end %>
+    </div>
   </div>
 </div>

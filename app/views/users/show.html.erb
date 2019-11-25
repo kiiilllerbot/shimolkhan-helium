@@ -1,127 +1,187 @@
 <% provide(:page_title, "| Account Page") %>
-<div class="row  animated slideInDown delay-0.5s">
-	<div class="col" style="margin-top: 5px">
-		<div class="jumbotron card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg);">
-		  <div class="text-white text-center py-0 px-4">
-		    <div>
-                <% if current_user %>
-                    <% if @user.image.attached? %>
-		    		    <%=image_tag(@user.image,:class=>"rounded-circle",:size=>"240x240") %>
-                    <% else %>
-                        <%=image_tag('user.png',:class=>"rounded-circle",:size=>"240x240") %>
-                    <% end %>
-
-                    <% if @user.name %>
-                        <h4 style="margin-top: 20px"><%= @user.name %></h4>
-                    <% else %>
+<div class="row justify-content-center animated slideInDown delay-0.5s" style="margin-top: 6vh">
+    <div class="col text-center">
+        <div class="card">
+            <div class="card-body">
+                <div id="profile">
+                    <!-- Profile Image -->
+                    <% if current_user %>
+                      <% if @user.image.attached? %>
+                            <%=image_tag(@user.image,:class=>"rounded-circle",:size=>"200x200") %>
+                      <% else %>
+                            <%=image_tag('user.png',:class=>"rounded-circle",:size=>"200x200") %>
+                      <% end %>
+                      <!-- /Profile Image -->
+                      <!-- User Full Name -->
+                      <% if @user.name %>
+                        <h4 style="margin-top: 20px">
+                          <%= @user.name %>
+                        </h4>
+                      <% else %>
                         <h4 style="margin-top: 20px"><%= @user.email %></h4>
-                    <% end %>
-                    <h2><%= @user.title %></h2>
-                    <% if current_user == @user%>
-						<div class="text-center">
-							<%= link_to "Edit Profile", edit_user_registration_path,:class=>"btn btn-sm btn-primary" %>
-						</div>
-					<% end %>
-				<% end %>
-		    	<hr class="my-4">
-			    <div class="row" style="margin-top: 50px">
-			    	<div class="col-6">
-				    	<div class="text-left" style="margin: 0 auto">
+                      <% end %>
+                      <!-- /User Full Name -->
 
-                            <% if !@user.work.blank? %>
-						    <p><i class="fas fa-briefcase" style="margin-right: 10px"></i> <%= @user.work %></p>
-                            <% end %>
+                      <!-- User Title -->
+                      <% if @user.title %>
+                        <h2><%= @user.title %></h2>
+                      <% end %>
+                      <!-- /User Title -->
 
-                            <% if !@user.address.blank? %>
-						    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px"></i> <%= @user.address %></p>
-                            <% end %>
+                      <!-- Edit Profile button -->
+                      <% if current_user == @user %>
+                        <%= link_to "Edit Profile",
+                            edit_user_registration_path,
+                            :class=>"btn btn-sm btn-primary" %>
+                      <% end %>
+                      <!-- /Edit Profile button -->
 
-                            <% if !@user.mobile_number.blank? %>
-						    <p><i class="fas fa-mobile-alt" style="margin-right: 10px"></i> <%= @user.mobile_number %></p>
-                            <% end %>
+                      <hr class="my-4">
 
-                            <% if !@user.whatsapp_number.blank? %>
-                            <p>
-                                <i class="fab fa-whatsapp" style="margin-right: 10px"></i>
-                                <%= @user.whatsapp_number %>
-                            </p>
-                            <% end %>
-
-                            <% if !@user.fb_link.blank? %>
-						    <p><i class="fab fa-facebook-f" style="margin-right: 10px"></i> <%= @user.fb_link %></p>
-                            <% end %>
-
-                            <% if !@user.ig_link.blank? %>
-						    <p><i class="fab fa-instagram" style="margin-right: 10px"></i> <%= @user.ig_link %></p>
-                            <% end %>
-
-                            <% if !@user.twitter_link.blank? %>
-						    <p><i class="fab fa-twitter" style="margin-right: 10px"></i> <%= @user.twitter_link %></p>
-                            <% end %>
-
-                            <% if !@user.in_link.blank? %>
-						    <p><i class="fab fa-linkedin-in" style="margin-right: 10px"></i> <%= @user.in_link %></p>
-                            <% end %>
-
-                            <% if !@user.github_link.blank? %>
-                            	<p><i class="fab fa-github" style="margin-right: 10px"></i> <%= @user.github_link %></p>
-                            <% end %>
-					    </div>
-			    	</div>
-                    <% if !@user.bio.blank? %>
-                        <div class="col-6">
-                            <p class="text-left lead" style="font-size: 14px; margin-top: 65px">
-                                <i class="fas fa-quote-left"></i>
-                                <%= @user.bio%>
-                                <i class="fas fa-quote-right"></i>
-                            </p>
+                      <!-- User Bio -->
+                      <% if !@user.bio.blank? %>
+                        <div class="col-12 text-center">
+                          <p class="lead">
+                              <%= @user.bio %>
+                          </p>
                         </div>
-                    <% end %>
-			    </div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</div>
-</div>
+                      <% end %>
+                      <!--/ User Bio -->
 
-<% if !@user.posts.blank? %>
-<div class="container">
-    <h4 class="text-center lead" style="margin: 20px 0px">Listing Posts</h4>
-    <hr class="my-2">
-<div class="row">
-    <% @user_posts.each do |post| %>
-    <div class="col-md-4">
-        <div class="card text-left" style="margin-bottom: 10px">
-                <div class="card-body">
-                    <div class="text-center">
-                        <% if post.user.image.attached? %>
-                            <%= link_to image_tag(post.user.image,:size=>"36x36",:class=>"rounded-circle"), post.user %>
-                        <% else %>
-                            <%= link_to post.user.email, post.user %>
+                      <hr class="my-4">
+
+                      <div class="text-left" style="padding-left: 20px">
+                        <!-- User Work -->
+                        <% if !@user.work.blank? %>
+                          <i class="fas fa-briefcase" style="margin-right: 10px"></i>
+                          <%= @user.work %>
                         <% end %>
-                    </div>
-                    <div class="text-center">
-                        <small><%= post.created_at.strftime("%B, %d, %Y")%></small>
-                    <div class="card-text">
-                        <%= link_to post.title, post_path(post),:class=>"post-link" %>
-                    </div>
-                    <%= link_to post do %>
-                        <button class="btn btn-sm btn-primary">
-                        <i class="far fa-thumbs-up"></i> <%= post.get_upvotes.size %>
-                        <span style="padding: 0px 5px"></span>
-                        <i class="far fa-thumbs-down"></i> <%= post.get_downvotes.size %>
-                        <span style="padding: 0px 5px"></span>
-                        <i class="far fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %>
-                        <span style="padding: 0px 5px"></span>
-                        <i class="far fa-comment"></i> <%= post.comments.count %>
-                        </button>
-                    <% end %>
+                        <!-- /User Work -->
+
+                        <br>
+
+                        <!-- User Address -->
+                        <% if !@user.address.blank? %>
+                          <i class="fas fa-map-marker-alt" style="margin-right: 10px"></i> 
+                          <%= @user.address %>
+                        <% end %>
+                        <!-- /User Address -->
+
+                        <br>
+
+                        <!-- User Mobile Number -->
+                        <% if !@user.mobile_number.blank? %>
+                          <i class="fas fa-mobile-alt" style="margin-right: 10px"></i>
+                          <%= @user.mobile_number %>
+                        <% end %>
+                        <!-- /User Mobile Number -->
+
+                        <br>
+
+                        <!-- User Whatsapp Number -->
+                        <% if !@user.whatsapp_number.blank? %>
+                          <i class="fab fa-whatsapp" style="margin-right: 10px"></i>
+                          <%= @user.whatsapp_number %>
+                        <% end %>
+                        <!-- /User Whatsapp Number -->
+
+                        <br>
+
+                        <!-- User FB Link -->
+                        <% if !@user.fb_link.blank? %>
+                          <i class="fab fa-facebook-f" style="margin-right: 10px"></i>
+                          <%= @user.fb_link %>
+                        <% end %>
+                        <!-- /User FB Link -->
+
+                        <br>
+
+                        <!-- User Twitter Link -->
+                        <% if !@user.twitter_link.blank? %>
+                          <i class="fab fa-twitter" style="margin-right: 10px"></i>
+                          <%= @user.twitter_link %>
+                        <% end %>
+                        <!-- /User Twitter Link -->
+
+                        <br>
+
+                        <!-- User IG Link -->
+                        <% if !@user.ig_link.blank? %>
+                          <i class="fab fa-instagram" style="margin-right: 10px"></i>
+                          <%= @user.ig_link %>
+                        <% end %>
+                        <!-- /User IG Link -->
+
+                        <br>
+
+                        <!-- User IN Link -->
+                        <% if !@user.in_link.blank? %>
+                          <i class="fab fa-linkedin-in" style="margin-right: 10px"></i>
+                          <%= @user.in_link %>
+                        <% end %>
+                        <!-- /User IG Link -->
+
+                        <br>
+
+                        <!-- User Github Link -->
+                        <% if !@user.github_link.blank? %>
+                          <i class="fab fa-github" style="margin-right: 10px"></i>
+                          <%= @user.github_link %>
+                        <% end %>
+                        <!-- /User Github Link -->
+                      <% end %>
                     </div>
                 </div>
+                
             </div>
+        </div>
     </div>
+</div>
+
+<br>
+
+<!-- Listing Posts -->
+<% if !@user.posts.blank? %>
+  <div class="row">
+    <% @user_posts.each do |post| %>
+      <div class="col col-md-4">
+        <div class="card mb-2">
+          <% if post.image.attached? %>
+            <%= link_to image_tag(post.image,:class=>"card-img-top",:height=>"260")%>
+          <% else %>
+            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" alt="Card image cap" height="260">
+          <% end %>
+          <div class="card-body">
+            <div class="text-center">
+              <small><%= post.created_at.strftime("%B, %d, %Y")%></small>
+              <div class="card-text">
+                <%= link_to truncate(post.title,:length=>24), post_path(post),:class=>"post-link" %>
+              </div>
+              <%= link_to post do %>
+                <button class="btn btn-sm btn-primary">
+                  <i class="far fa-thumbs-up"></i> <%= post.get_upvotes.size %>
+                  <span style="padding: 0px 5px"></span>
+                  <i class="far fa-thumbs-down"></i> <%= post.get_downvotes.size %>
+                  <span style="padding: 0px 5px"></span>
+                  <i class="far fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %>
+                  <span style="padding: 0px 5px"></span>
+                  <i class="far fa-comment"></i> <%= post.comments.count %>
+                </button>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-</div>
-</div>
+  </div>
 <% end %>
+<!-- /Listing Posts -->
+
+<!-- Back Button -->
+<%= link_to posts_path do %>
+  <button class="btn btn-md btn-info btn-block" style="margin-left: 0">
+    <i class="fas fa-arrow-left"></i>
+  </button>
+<% end %>
+<!-- /Back Button -->
+
