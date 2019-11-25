@@ -32,6 +32,16 @@
           <br>
           <small style="opacity: 0.75">Posted on <%= post.created_at.strftime("%B, %d, %Y")%></small>
         <% end %>
+        <br>
+        <%= link_to post do %>
+          <button class="btn btn-sm btn-primary">
+            <i class="far fa-thumbs-up"></i> <%= post.get_upvotes.size %>
+            <span style="padding: 0px 5px"></span>
+            <i class="far fa-thumbs-down"></i> <%= post.get_downvotes.size %>
+            <span style="padding: 0px 5px"></span>
+            <i class="far fa-comment"></i> <%= post.comments.count %>
+          </button>
+        <% end %>
       </div>
     </div>
   </div>
