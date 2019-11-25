@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   load_and_authorize_resource
+  skip_authorize_resource :only => [:upvote, :downvote]
 
   impressionist :actions=>[:show]
 
@@ -8,7 +9,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
-    @posts = Post.all.where(["title like ?", "%#{params[:search]}%"]).paginate(page: params[:page], per_page: 12)
+    @posts = Post.all.order('created_at DESC').where(["title like ?", "%#{params[:search]}%"]).paginate(page: params[:page], per_page: 12)
   end
 
   def show

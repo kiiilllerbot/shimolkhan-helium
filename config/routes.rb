@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'developer', to: 'pages#developer'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'

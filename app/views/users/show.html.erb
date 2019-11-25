@@ -40,6 +40,13 @@
 						    <p><i class="fas fa-mobile-alt" style="margin-right: 10px"></i> <%= @user.mobile_number %></p>
                             <% end %>
 
+                            <% if !@user.whatsapp_number.blank? %>
+                            <p>
+                                <i class="fab fa-whatsapp" style="margin-right: 10px"></i>
+                                <%= @user.whatsapp_number %>
+                            </p>
+                            <% end %>
+
                             <% if !@user.fb_link.blank? %>
 						    <p><i class="fab fa-facebook-f" style="margin-right: 10px"></i> <%= @user.fb_link %></p>
                             <% end %>
@@ -77,3 +84,44 @@
 		</div>
 	</div>
 </div>
+
+<% if !@user.posts.blank? %>
+<div class="container">
+    <h4 class="text-center lead" style="margin: 20px 0px">Listing Posts</h4>
+    <hr class="my-2">
+<div class="row">
+    <% @user_posts.each do |post| %>
+    <div class="col-md-4">
+        <div class="card text-left" style="margin-bottom: 10px">
+                <div class="card-body">
+                    <div class="text-center">
+                        <% if post.user.image.attached? %>
+                            <%= link_to image_tag(post.user.image,:size=>"36x36",:class=>"rounded-circle"), post.user %>
+                        <% else %>
+                            <%= link_to post.user.email, post.user %>
+                        <% end %>
+                    </div>
+                    <div class="text-center">
+                        <small><%= post.created_at.strftime("%B, %d, %Y")%></small>
+                    <div class="card-text">
+                        <%= link_to post.title, post_path(post),:class=>"post-link" %>
+                    </div>
+                    <%= link_to post do %>
+                        <button class="btn btn-sm btn-primary">
+                        <i class="far fa-thumbs-up"></i> <%= post.get_upvotes.size %>
+                        <span style="padding: 0px 5px"></span>
+                        <i class="far fa-thumbs-down"></i> <%= post.get_downvotes.size %>
+                        <span style="padding: 0px 5px"></span>
+                        <i class="far fa-eye"></i> <%= post.impressionist_count(:filter=>:ip_address) %>
+                        <span style="padding: 0px 5px"></span>
+                        <i class="far fa-comment"></i> <%= post.comments.count %>
+                        </button>
+                    <% end %>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <% end %>
+</div>
+</div>
+<% end %>

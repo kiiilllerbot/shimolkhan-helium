@@ -59,7 +59,7 @@
 					<div class="text-center">
 						<small><%= post.created_at.strftime("%B, %d, %Y")%></small>
 					<div class="card-text">
-						<%= link_to post.title, post_path(post),:class=>"post-link" %>
+						<%= link_to truncate(post.title, :length => 20), post_path(post),:class=>"post-link" %>
 					</div>	
 					</div>
 				</div>

@@ -21,7 +21,9 @@
       <% end %>
       <div class="card-body" style="padding: 10px">
         <div class="badge badge-primary"><%= post.category.name %></div>
-        <h6 class="card-title" style="margin-top: 5px"><%= link_to post.title,post,:class=>"post-link" %></h6>
+        <h6 class="card-title" style="margin-top: 5px">
+          <%= link_to truncate(post.title, :length => 20), post,:class=>"post-link" %>
+        </h6>
         <% if post.user.image.attached? %>
           <div>
           <%= link_to image_tag(post.user.image,:size=>"28x28",:class=>"rounded-circle"),post.user%>

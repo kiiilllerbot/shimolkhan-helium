@@ -29,7 +29,11 @@
             </div>
           <% end %>
         </li>
+
         <% if !user_signed_in? %>
+        <li class="nav-item mt-2">
+          <%= link_to "Developer", developer_path,:class=>"btn btn-sm btn-secondary"%>
+        </li>
         <li class="nav-item mt-2">
           <%= link_to "Login", new_user_session_path, :class=>"btn btn-sm btn-success"%>
         </li>
@@ -88,7 +92,9 @@
             <% end %>
           </li>
         <% end %>
-        <%= link_to "Dashboard", rails_admin_path, :class=>"btn btn-sm purple-gradient"%>
+        <% if current_user && current_user.admin? %>
+          <%= link_to "Dashboard", rails_admin_path, :class=>"btn btn-sm purple-gradient"%>
+        <% end %>
         <%= link_to "Log-Out", destroy_user_session_path,method: :delete, :class=>"btn btn-sm btn-success"%>
       </ul>
       <% end %>
