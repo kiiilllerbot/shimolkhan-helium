@@ -4,7 +4,7 @@
     <form class="form-inline md-form form-sm mt-0">
       <%= form_tag posts_path, method: :get do %>
         <i class="fas fa-search" aria-hidden="true"></i>
-        <%= text_field_tag :search, params[:search], :class=>'form-control form-control-sm ml-3 w-75', placeholder:'Search Post By Title'%>
+        <%= text_field_tag :search, params[:search], :class=>'form-control form-control-sm ml-3 w-75', placeholder:'Search Post By Title (Case-Senstive)'%>
       <% end %>
     </form>
   </div>
@@ -49,6 +49,18 @@
   </div>
   <% end %>
 </div>
+
+<!-- Bootstrap4 Pagination + Will_Paginate + Bootstrap-will_paginate Gem -->
+<nav aria-label="Page navigation example" style="margin-top: 10px">
+  <ul class="pagination pg-blue justify-content-center">
+            <%= will_paginate(@posts,
+            :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer,
+            inner_window: 1,
+            outer_window: 0,
+            class: 'text-center') %>
+  </ul>
+</nav>
+<!-- / Pagination -->
 
 <% if user_signed_in? %>
 <div class="row">

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories
-  
+
   resources :posts do
     member do
       put "like", to: "posts#upvote"
@@ -22,6 +22,6 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  root 'home#index'
+  root 'posts#index'
   
 end

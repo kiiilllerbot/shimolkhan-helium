@@ -21,6 +21,8 @@ gem 'dotenv-rails', '~> 2.7', '>= 2.7.5'
 gem 'devise', '~> 4.7', '>= 4.7.1'
 gem 'acts_as_votable', '~> 0.12.1'
 gem 'impressionist', '~> 1.6', '>= 1.6.1'
+gem 'will_paginate', '~> 3.2', '>= 3.2.1'
+gem 'bootstrap-will_paginate', '~> 1.0'
 
 group :development do
 	gem 'better_errors', '~> 2.5', '>= 2.5.1'

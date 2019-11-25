@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [ :index, :show ]
 
   def index
-    @posts = Post.all.where(["title like ?", "%#{params[:search]}%"])
+    @posts = Post.all.where(["title like ?", "%#{params[:search]}%"]).paginate(page: params[:page], per_page: 12)
   end
 
   def show
