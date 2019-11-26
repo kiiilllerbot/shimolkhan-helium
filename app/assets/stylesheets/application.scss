@@ -134,3 +134,21 @@ p{
 abbr{
     display: none; 
 }
+
+// Small devices (landscape phones, 576px and up)
+@media only screen and (max-width: 576px) {
+    .navbar{
+        .btn.btn-sm{
+            width: 100%;
+        }
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@media only screen and (max-width: 768px)  {
+    .navbar{
+        .btn.btn-sm{
+            width: 100%;
+        }
+    }
+}

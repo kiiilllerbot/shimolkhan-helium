@@ -34,13 +34,13 @@
 
         <% if !user_signed_in? %>
           <li class="nav-item mt-2">
-            <%= link_to "Developer", developer_path, :class=>"btn btn-sm purple-gradient btn-block"%>
+            <%= link_to "Developer", developer_path, :class=>"btn btn-sm purple-gradient"%>
           </li>
           <li class="nav-item mt-2">
-            <%= link_to "Login", new_user_session_path, :class=>"btn btn-sm btn-success btn-block"%>
+            <%= link_to "Login", new_user_session_path, :class=>"btn btn-sm btn-success"%>
           </li>
           <li class="nav-item mt-2">
-            <%= link_to "Register", new_user_registration_path, :class=>"btn btn-sm btn-info btn-block"%>
+            <%= link_to "Register", new_user_registration_path, :class=>"btn btn-sm btn-info"%>
           </li>
         <% end %>
 
@@ -99,10 +99,10 @@
 
           <% if current_user.admin? %>
             <ul class="navbar-nav ml-auto">
-              <%= link_to "Dashboard", rails_admin_path, :class=>"btn btn-sm btn-warning btn-block"%>
+              <%= link_to "Dashboard", rails_admin_path, :class=>"btn btn-sm btn-warning"%>
             </ul>
              <% end %>
-          <%= link_to "Log-Out", destroy_user_session_path,method: :delete, :class=>"btn btn-sm btn-success btn-block"%>
+          <%= link_to "Log-Out", destroy_user_session_path,method: :delete, :class=>"btn btn-sm btn-success"%>
         <% end %>
       </div>
     </div>
