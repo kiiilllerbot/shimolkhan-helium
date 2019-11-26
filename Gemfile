@@ -25,6 +25,7 @@ gem 'will_paginate', '~> 3.2', '>= 3.2.1'
 gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
 gem 'rails_admin', '~> 2.0'
+gem "aws-sdk-s3", require: false
 
 group :production do
 	gem 'rails_12factor', '~> 0.0.3'
