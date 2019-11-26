@@ -33,22 +33,23 @@
                         <%= link_to "Edit Profile",
                             edit_user_registration_path,
                             :class=>"btn btn-sm btn-primary" %>
+
                       <% end %>
                       <!-- /Edit Profile button -->
 
-                      <hr class="my-4">
+                      
 
                       <!-- User Bio -->
                       <% if !@user.bio.blank? %>
+                      <hr class="my-4">
                         <div class="col-12 text-center">
                           <p class="lead">
                               <%= @user.bio %>
                           </p>
                         </div>
+                        <hr class="my-4">
                       <% end %>
                       <!--/ User Bio -->
-
-                      <hr class="my-4">
 
                       <div class="text-left" style="padding-left: 20px">
                         <!-- User Work -->

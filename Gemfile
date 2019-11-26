@@ -26,6 +26,10 @@ gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'cancancan', '~> 3.0', '>= 3.0.1'
 gem 'rails_admin', '~> 2.0'
 
+group :production do
+	gem 'rails_12factor', '~> 0.0.3'
+end
+
 group :development do
 	gem 'better_errors', '~> 2.5', '>= 2.5.1'
 end
