@@ -32,7 +32,7 @@ group :production do
 end
 
 group :development do
-	gem 'better_errors', '~> 2.5', '>= 2.5.1'
+	gem 'better_errors', '~> 2.8'
 end
 
 group :development, :test do
